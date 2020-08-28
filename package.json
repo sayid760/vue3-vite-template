@@ -1,0 +1,41 @@
+{
+  "name": "vue3-vite-ts",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint --ext .ts,vue src",
+    "fix": "eslint --fix src",
+    "test:unit": "jest"
+  },
+  "dependencies": {
+    "vue": "^3.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.10",
+    "@vue/compiler-sfc": "^3.0.0-rc.1",
+    "@vue/test-utils": "^1.0.4",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.7.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "jest": "^26.4.2",
+    "stylelint": "^13.6.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-standard": "^20.0.0",
+    "ts-jest": "^26.3.0",
+    "vite": "^1.0.0-rc.1",
+    "vue-eslint-parser": "^7.1.0",
+    "vue-jest": "^3.0.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "npm lint --fix"
+    ]
+  }
+}
