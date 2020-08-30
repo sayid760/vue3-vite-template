@@ -1,6 +1,9 @@
 - [组件思路]()
-  - [小文件上传](## 文件上传)
-  - [大文件分片上传](## 大文件分片上传)
+  - [小文件上传](##文件上传)
+  - [大文件分片上传](##大文件分片上传)
+    -[如何让上传的图片展示在页面](###如何让上传的图片展示在页面)
+    -[spark-md5生成md5](###spark-md5.js)
+    -[其他技巧](###其他技巧)
 
 ## 文件上传
 
@@ -72,7 +75,7 @@ readerStream.pipe(writerStream);
 fse.rmdirSync(chunkDir)
 ```
 
-## 如何让上传的图片展示在页面
+### 如何让上传的图片展示在页面
 
 监听文件上传，通过 FileReader 去读取 file，返回 data:URL 格式的 Base64 字符串，用来展示到页面去
 
@@ -90,7 +93,7 @@ reader.onload = function () {
 ;<img src={dataUrl} alt={file.name} />
 ```
 
-## spark-md5.js
+### spark-md5.js
 
 - 使用 spark-md5 根据文件内容算出文件 hash
 - 通过 hash 可以判断服务端是否已经上传该文件，从而直接提示用户上传成功（秒传）
