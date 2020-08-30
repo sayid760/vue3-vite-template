@@ -19,13 +19,10 @@ const pipeStream = (path, writeStream) =>
 // 合并切片
 const mergeFileChunk = async (filePath, fileHash, size) => {
   const chunkDir = path.resolve(UPLOAD_DIR, fileHash) // D:\proAll\vite-template-master\target\2297fb2e3e75318cd0a07c80a3f406eb
-  console.log(fse.readdir(chunkDir))
   const chunkPaths = await fse.readdir(chunkDir)
-  console.log(chunkPaths)
   // 根据切片下标进行排序
   // 否则直接读取目录的获得的顺序可能会错乱
   chunkPaths.sort((a, b) => a.split('-')[1] - b.split('-')[1])
-  console.log(chunkPaths)
   await Promise.all(
     chunkPaths.map((chunkPath, index) =>
       pipeStream(
@@ -38,7 +35,6 @@ const mergeFileChunk = async (filePath, fileHash, size) => {
       )
     )
   )
-  console.log('sssss')
   if (fse.existsSync(chunkDir)) {
     fse.rmdirSync(chunkDir) // 合并后删除保存切片的目录
   }
@@ -64,7 +60,6 @@ router.post('/merge', async (ctx, next) => {
 router.post('/', async (ctx, next) => {
   const multipart = new multiparty.Form()
   await multipart.parse(ctx.req, async (err, fields, files) => {
-    console.log('1111')
     if (err) {
       console.error(err)
       ctx.body = {
@@ -88,7 +83,6 @@ router.post('/', async (ctx, next) => {
       }
       return
     }
-    console.log('222222')
     // 切片目录不存在，创建切片目录
     if (!fse.existsSync(chunkDir)) {
       await fse.mkdirs(chunkDir)
@@ -97,7 +91,6 @@ router.post('/', async (ctx, next) => {
     // fs-extra 的 rename 方法 windows 平台会有权限问题
     // https://github.com/meteor/meteor/issues/7852#issuecomment-255767835
     await fse.move(chunk.path, path.resolve(chunkDir, hash))
-    console.log('333333')
   })
   ctx.body = {
     code: 200,
@@ -109,9 +102,6 @@ router.post('/', async (ctx, next) => {
 router.post('/verify', async (ctx, next) => {
   const { fileHash, filename } = ctx.request.body
   const ext = extractExt(filename)
-  // console.log(fileHash)
-  // console.log(ext)
-  // console.log(`${fileHash}${ext}`)
   const filePath = path.resolve(UPLOAD_DIR, `${fileHash}${ext}`)
   // 以同步的方法检测目录是否存在
   if (fse.existsSync(filePath)) {
@@ -132,8 +122,6 @@ router.post('/fileUpload', async (ctx, next) => {
     if (err) return next(err)
     const [name] = fields.name
     const [file] = files.file
-    console.log(name)
-    console.log(file)
     await fse.move(file.path, path.resolve(UPLOAD_DIR, name), { overwrite: true })
   })
   ctx.body = {
