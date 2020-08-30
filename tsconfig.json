@@ -1,0 +1,22 @@
+{
+  "importHelpers": true,
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "types": ["jest", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "lib": ["es2015", "dom"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "index.d.ts",
+    "public/generateHash.js"
+  ],
+  "exclude": ["node_modules"]
+}

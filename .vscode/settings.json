@@ -1,0 +1,14 @@
+{
+  "eslint.packageManager": "npm",
+  "prettier.packageManager": "npm",
+  "stylelint.packageManager": "npm",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "vetur.format.defaultFormatter.html": "prettier",
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "vue"],
+  "editor.formatOnSave": true,
+  "prettier.vueIndentScriptAndStyle": true,
+  "vetur.experimental.templateInterpolationService": true,
+  "vetur.validation.template": false
+}

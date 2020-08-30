@@ -1,0 +1,39 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
+  "parse": "@typescript-eslint/parser",
+  "plugins": ["prettier", "vue"],
+  "extends": [
+    "plugin:vue/vue3-recommended",
+    "plugin:vue/vue3-strongly-recommended",
+    "plugin:vue/vue3-essential",
+    // "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/vue"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    // "ecmaVersion": 7,
+    "sourceType": "module"
+
+    // "sourceType": "module"
+  },
+  // "overrides": [
+  //   {
+  //     "files": ["**/__tests__/*.{j,t}s?(x)", "**/tests/unit/**/*.spec.{j,t}s?(x)"],
+  //     "env": {
+  //       "jest": true
+  //     }
+  //   }
+  // ],
+  "rules": {
+    // "comma-dangle": ["error", "never"], // 是否允许对象中出现结尾逗号
+    // "no-extra-semi": 2, // 不允许出现不必要的分号
+    // "@typescript-eslint/no-inferrable-types": "off",
+    // "@typescript-eslint/rule-name": "error"
+  }
+}
