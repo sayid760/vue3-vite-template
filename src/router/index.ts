@@ -1,6 +1,6 @@
 // tslint:disable
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
 
 // const routes: Array<RouteConfig> = [
 const routes: Array<any> = [

@@ -1,6 +1,8 @@
-- [组件思路]()
-  - [小文件上传](##文件上传)
-  - [大文件分片上传](##大文件分片上传) -[如何让上传的图片展示在页面](###如何让上传的图片展示在页面) -[spark-md5 生成 md5](###spark-md5.js) -[其他技巧](###其他技巧)
+- [小文件上传](##文件上传)
+- [大文件分片上传](##大文件分片上传)
+- [如何让上传的图片展示在页面](##如何让上传的图片展示在页面)
+- [spark-md5 生成 md5](##spark-md5.js)
+- [其他技巧](##其他技巧)
 
 ## 文件上传
 
@@ -14,8 +16,6 @@ request({ url: '/fileUpload', data: formData })
 ```
 
 ## 大文件分片上传
-
-思路：
 
 1. 使用 file.slice()把 file 数据切分成几片，然后存放在 chunks 数组里面去上传（把每个 chunk 通过用 FormData 对象上传二进制文件），上传完，就判断是否上传成功，否则传入参数继续上传
 2. 上传之前，通过 spark-md5 把分片数组生成 md5，然后调用后端验证是否内存有此文件的 md5 哈希名
@@ -90,7 +90,7 @@ reader.onload = function () {
 ;<img src={dataUrl} alt={file.name} />
 ```
 
-### spark-md5.js
+## spark-md5.js
 
 - 使用 spark-md5 根据文件内容算出文件 hash
 - 通过 hash 可以判断服务端是否已经上传该文件，从而直接提示用户上传成功（秒传）
@@ -130,7 +130,7 @@ document.getElementById('file').addEventListener('change', function () {
 })
 ```
 
-### 其他技巧：
+## 其他技巧：
 
 - 计算 hash 比较耗时，借助 worker 实现
 - 使用 xhr.onprogress 来实现上传进度条

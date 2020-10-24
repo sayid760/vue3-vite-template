@@ -1,5 +1,6 @@
 <template>
   <div>
+    <el-button>默认按钮</el-button>
     <router-link to="/helloWorld">HelloWorld</router-link> &nbsp; <router-link to="/upload">upload</router-link> &nbsp;
     <router-link to="/largeUpload">largeUpload</router-link>
     <router-view />

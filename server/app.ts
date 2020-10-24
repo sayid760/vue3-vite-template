@@ -1,7 +1,6 @@
-import Koa from 'koa'
-// import router.from 'koa-router.
-import bodyparser from 'koa-bodyparser'
-import cors from 'koa2-cors'
+const Koa = require('Koa')
+const bodyparser = require('koa-bodyparser')
+const cors = require('koa2-cors')
 const app = new Koa()
 const index = require('./index')
 
